@@ -1,0 +1,52 @@
+{% extends "portal/base.html" %}
+{% block content %}
+<style>
+  html,
+body {
+  height: 100%;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+</style>
+<main class="form-signin w-100 m-auto">
+  <form action="" method="POST" id="login">
+    {% csrf_token %}
+    <h1 class="h3 mb-3 fw-normal">Авторизация</h1>
+    {% if form.errors %}
+       <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Ошибка!</strong> {{ form.errors }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endif %}
+    <div class="form-floating">
+      {{ form.username }}
+      <label for="floatingInput">Пользователь</label>
+    </div>
+    <div class="form-floating">
+      {{ form.password }}
+      <label for="floatingPassword">Пароль</label>
+    </div>
+    <button class="btn btn-primary w-100 py-2" type="submit">Авторизоваться</button>
+  </form>
+</main>
+{% endblock %}

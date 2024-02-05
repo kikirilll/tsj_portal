@@ -1,0 +1,35 @@
+{% extends "portal/base.html" %}
+{% block title %}User counter page{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <div class="d-flex justify-content-between flex-wrap">
+                <h1>{{ user_data.first_name}} {{ user_data.last_name}}, {{profile_data.building}} кв. {{profile_data.flatNumber}}</h1>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Холодная вода</th>
+                    <th scope="col">Горячая вода</th>
+                    <th scope="col">Электричество</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for counter in counters %}
+                <tr id="row{{counter.id}}">
+                    <th scope="row" id="id">{{ counter.id }}</th>
+                    <td id="date">{{ counter.date }}</td>
+                    <td id="coldwater">{{ counter.coldWater }}</td>
+                    <td id="hotwater">{{ counter.hotWater }}</td>
+                    <td id="electricity">{{ counter.electricity }}</td>
+                </tr>
+                {% endfor %}                
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
